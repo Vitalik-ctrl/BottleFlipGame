@@ -7,7 +7,8 @@
 
 import Foundation
 
-// Setting Font
 
+
+// Setting Font
 let UI_FONT = "futura"
 

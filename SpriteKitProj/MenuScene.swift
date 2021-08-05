@@ -7,19 +7,26 @@
 
 import SpriteKit
 
-class MenuScene: SKScene {
+class MenuScene: SimpleScene {
 
     var playButtonNode = SKSpriteNode()
     var tableNode = SKSpriteNode()
     var bottleNode = SKSpriteNode()
     var leftButtonNode = SKSpriteNode()
     var rightButtonNode = SKSpriteNode()
+    var flipsTagNode = SKSpriteNode()
+    var unlockLabelNode = SKLabelNode()
+    
     
     var selectedBottleIndex = 0
     var highScore = 0
     var totalFlips = 0
     var bottles = [Bottle]()
     var totalBottles = 0
+    var isLockButton = false
+    
+    
+    
     
     override func didMove(to view: SKView) {
         self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -38,11 +45,11 @@ class MenuScene: SKScene {
         self.addChild(logo)
         
         // Best Score Label
-        let bestScoreLabelNode = LabelNode(text: "BEST RESULT", fontSize: 16, position: CGPoint(x: self.frame.midX - 70, y: self.frame.maxY - 140), fontColor: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1))
+        let bestScoreLabelNode = LabelNode(text: "BEST RESULT", fontSize: 16, position: CGPoint(x: self.frame.midX - 70, y: self.frame.maxY - 140), fontColor: #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1))
         self.addChild(bestScoreLabelNode)
         
         // High Score Label
-        let highScoreLabelNode = LabelNode(text: "\(highScore)", fontSize: 24, position: CGPoint(x: self.frame.midX - 70, y: self.frame.maxY - 175), fontColor: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1))
+        let highScoreLabelNode = LabelNode(text: "\(highScore)", fontSize: 24, position: CGPoint(x: self.frame.midX - 70, y: self.frame.maxY - 175), fontColor: #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1))
         self.addChild(highScoreLabelNode)
         
         // Total Flips Label
@@ -54,11 +61,11 @@ class MenuScene: SKScene {
         self.addChild(flipsLabelNode)
         
         // Play Button
-        playButtonNode = ButtonNode(imageNode: "PlayBtn", position: CGPoint(x: self.frame.midX, y: self.frame.midY), xScale: 0.6, yScale: 0.6)
+        playButtonNode = ButtonNode(imageNode: "PlayBtn", position: CGPoint(x: self.frame.midX, y: self.frame.midY), xScale: 1, yScale: 1)
         self.addChild(playButtonNode)
         
         // Table Node
-        tableNode = ButtonNode(imageNode: "table", position: CGPoint(x: self.frame.midX, y: self.frame.minY + 30), xScale: 0.3, yScale: 0.3)
+        tableNode = ButtonNode(imageNode: "table", position: CGPoint(x: self.frame.midX, y: self.frame.minY + 5), xScale: 0.45, yScale: 0.45)
         tableNode.zPosition = 3
         self.addChild(tableNode)
         
@@ -70,17 +77,26 @@ class MenuScene: SKScene {
         self.addChild(bottleNode)
         
         // Left Button
-        leftButtonNode = ButtonNode(imageNode: "chevron_left", position: CGPoint(x: self.frame.midX - 90, y: self.frame.minY + 125), xScale: 0.15, yScale: 0.15)
+        leftButtonNode = ButtonNode(imageNode: "chevron_left", position: CGPoint(x: self.frame.midX - 80, y: self.frame.minY + 120), xScale: 0.12, yScale: 0.12)
         self.changeButton(buttonNode: leftButtonNode, state: false)
         self.addChild(leftButtonNode)
         
         // Right Button
-        rightButtonNode = ButtonNode(imageNode: "chevron_right", position: CGPoint(x: self.frame.midX + 90, y: self.frame.minY + 125), xScale: 0.15, yScale: 0.15)
+        rightButtonNode = ButtonNode(imageNode: "chevron_right", position: CGPoint(x: self.frame.midX + 80, y: self.frame.minY + 120), xScale: 0.12, yScale: 0.12)
         self.changeButton(buttonNode: rightButtonNode, state: true)
         self.addChild(rightButtonNode)
         
+        // Unlock Label
+        unlockLabelNode = LabelNode(text: "0 to unlock", fontSize: 18, position: CGPoint(x: self.frame.midX, y: self.frame.midY - 75), fontColor: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1))
+        unlockLabelNode.zPosition = 28
+        self.addChild(unlockLabelNode)
+        
+        
+        
+        
         // Update Selected Bottle
         self.updateSelectedBottle(selectedBottle)
+        
     }
     
     func changeButton(buttonNode: SKSpriteNode, state: Bool) {
@@ -96,15 +112,39 @@ class MenuScene: SKScene {
     }
     
     func updateSelectedBottle(_ bottle: Bottle){
+        
+        // Update to the selected bottle
+        let unlockFlips = bottle.MinFlips!.intValue - highScore
+        let unlocked = unlockFlips <= 0
+        
+        
+        
+        flipsTagNode.isHidden = unlocked
+        unlockLabelNode.isHidden = unlocked
+        
         bottleNode.texture = SKTexture(imageNamed: bottle.Sprite!)
+        bottleNode.color = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
+        if unlocked {
+            bottleNode.colorBlendFactor = 0
+            pulseStartNode(playButtonNode)
+        } else {
+            playButtonNode.removeAllActions()
+            bottleNode.colorBlendFactor = 1
+        }
+        playButtonNode.texture = SKTexture(imageNamed: (unlocked ? "PlayBtn": "lock"))
+        
+        isLockButton = !unlocked
         
         bottleNode.size = CGSize(
             width: bottleNode.texture!.size().width * CGFloat(bottle.XScale!.floatValue),
             height: bottleNode.texture!.size().height * CGFloat(bottle.YScale!.floatValue))
         
-        bottleNode.position = CGPoint(x: self.frame.midX, y: self.frame.minY + bottleNode.size.height/2 + 79)
+        bottleNode.position = CGPoint(x: self.frame.midX, y: self.frame.minY + bottleNode.size.height/2 + 78)
+        
+        unlockLabelNode.text = "\(bottle.MinFlips!.intValue) flips to unlock"
         
         self.updateArrowsState()
+        
     }
     
     func updateArrowsState() {
@@ -118,6 +158,11 @@ class MenuScene: SKScene {
         for touch in touches {
             
             let location = touch.location(in: self)
+            
+            // Play button is pressed
+            if playButtonNode.contains(location) {
+                self.startGame()
+            }
             
             // Left button is pressed
             if leftButtonNode.contains(location) {
@@ -147,4 +192,23 @@ class MenuScene: SKScene {
         BottleController.saveSelectedBottle(selectedBottleIndex)
     }
     
+    func pulseStartNode(_ node: SKSpriteNode) {
+        // Pulse animation for lock
+    
+        let scaleDownAction = SKAction.scale(to: 1, duration: 0.5)
+        let scaleUpAction = SKAction.scale(to: 1.2, duration: 0.5)
+        let seq = SKAction.sequence([scaleDownAction, scaleUpAction])
+        
+        node.run(SKAction.repeatForever(seq))
+        
+        
+    }
+    
+    func startGame() {
+        // Not Lock button -> start game
+        if !isLockButton {
+            self.changeToSceneBy(nameScene: "GameScene")
+    }
+    
+}
 }

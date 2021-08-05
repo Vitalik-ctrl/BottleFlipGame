@@ -8,9 +8,9 @@
 		<key>Mass</key>
 		<real>0.95</real>
 		<key>XScale</key>
-		<real>0.21</real>
+		<real>0.15</real>
 		<key>YScale</key>
-		<real>0.21</real>
+		<real>0.15</real>
 		<key>Restitution</key>
 		<integer>0</integer>
 		<key>MinFlips</key>
@@ -22,9 +22,9 @@
 		<key>Mass</key>
 		<integer>1</integer>
 		<key>XScale</key>
-		<real>0.2</real>
+		<real>0.15</real>
 		<key>YScale</key>
-		<real>0.2</real>
+		<real>0.15</real>
 		<key>Restitution</key>
 		<real>0.032</real>
 		<key>MinFlips</key>
@@ -36,9 +36,9 @@
 		<key>Mass</key>
 		<real>1.04</real>
 		<key>XScale</key>
-		<real>0.47</real>
+		<real>0.15</real>
 		<key>YScale</key>
-		<real>0.42</real>
+		<real>0.15</real>
 		<key>Restitution</key>
 		<real>0.09</real>
 		<key>MinFlips</key>
@@ -50,9 +50,9 @@
 		<key>Mass</key>
 		<real>1.12</real>
 		<key>XScale</key>
-		<real>0.2</real>
+		<real>0.15</real>
 		<key>YScale</key>
-		<real>0.2</real>
+		<real>0.15</real>
 		<key>Restitution</key>
 		<real>0.12</real>
 		<key>MinFlips</key>
@@ -64,9 +64,9 @@
 		<key>Mass</key>
 		<real>1</real>
 		<key>XScale</key>
-		<real>0.4</real>
+		<real>0.15</real>
 		<key>YScale</key>
-		<real>0.4</real>
+		<real>0.15</real>
 		<key>Restitution</key>
 		<real>0.07000000000000001</real>
 		<key>MinFlips</key>

@@ -21,6 +21,8 @@
 		3F00926226BAB623007079A5 /* Items.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F00926126BAB623007079A5 /* Items.plist */; };
 		3F00926426BAB921007079A5 /* Bottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F00926326BAB921007079A5 /* Bottle.swift */; };
 		3F00926626BABAB0007079A5 /* BottleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F00926526BABAB0007079A5 /* BottleController.swift */; };
+		3F00926826BBE996007079A5 /* SimpleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F00926726BBE996007079A5 /* SimpleScene.swift */; };
+		3F00926A26BC00B8007079A5 /* BottleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F00926926BC00B8007079A5 /* BottleNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		3F00926126BAB623007079A5 /* Items.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Items.plist; sourceTree = "<group>"; };
 		3F00926326BAB921007079A5 /* Bottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bottle.swift; sourceTree = "<group>"; };
 		3F00926526BABAB0007079A5 /* BottleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleController.swift; sourceTree = "<group>"; };
+		3F00926726BBE996007079A5 /* SimpleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleScene.swift; sourceTree = "<group>"; };
+		3F00926926BC00B8007079A5 /* BottleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +80,10 @@
 				3F00926126BAB623007079A5 /* Items.plist */,
 				3F00924426BA8F4E007079A5 /* GameScene.sks */,
 				3F00924826BA8F4E007079A5 /* GameScene.swift */,
+				3F00926926BC00B8007079A5 /* BottleNode.swift */,
 				3F00924A26BA8F4E007079A5 /* GameViewController.swift */,
 				3F00924C26BA8F4E007079A5 /* Main.storyboard */,
+				3F00926726BBE996007079A5 /* SimpleScene.swift */,
 				3F00924F26BA8F50007079A5 /* Assets.xcassets */,
 				3F00925726BA9242007079A5 /* MenuScene.swift */,
 				3F00925B26BA9662007079A5 /* ButtonNode.swift */,
@@ -167,8 +173,10 @@
 				3F00926426BAB921007079A5 /* Bottle.swift in Sources */,
 				3F00925826BA9242007079A5 /* MenuScene.swift in Sources */,
 				3F00925E26BA9DD7007079A5 /* LabelNode.swift in Sources */,
+				3F00926A26BC00B8007079A5 /* BottleNode.swift in Sources */,
 				3F00924B26BA8F4E007079A5 /* GameViewController.swift in Sources */,
 				3F00926026BA9ED7007079A5 /* Constants.swift in Sources */,
+				3F00926826BBE996007079A5 /* SimpleScene.swift in Sources */,
 				3F00924326BA8F4E007079A5 /* AppDelegate.swift in Sources */,
 				3F00926626BABAB0007079A5 /* BottleController.swift in Sources */,
 				3F00925C26BA9662007079A5 /* ButtonNode.swift in Sources */,
