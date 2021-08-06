@@ -16,6 +16,7 @@ class MenuScene: SimpleScene {
     var rightButtonNode = SKSpriteNode()
     var flipsTagNode = SKSpriteNode()
     var unlockLabelNode = SKLabelNode()
+    var back = SKSpriteNode()
     
     
     var selectedBottleIndex = 0
@@ -65,7 +66,7 @@ class MenuScene: SimpleScene {
         self.addChild(playButtonNode)
         
         // Table Node
-        tableNode = ButtonNode(imageNode: "table", position: CGPoint(x: self.frame.midX, y: self.frame.minY + 5), xScale: 0.45, yScale: 0.45)
+        tableNode = ButtonNode(imageNode: "table", position: CGPoint(x: self.frame.midX, y: self.frame.minY - 11), xScale: 0.55, yScale: 0.45)
         tableNode.zPosition = 3
         self.addChild(tableNode)
         
@@ -77,19 +78,25 @@ class MenuScene: SimpleScene {
         self.addChild(bottleNode)
         
         // Left Button
-        leftButtonNode = ButtonNode(imageNode: "chevron_left", position: CGPoint(x: self.frame.midX - 80, y: self.frame.minY + 120), xScale: 0.12, yScale: 0.12)
+        leftButtonNode = ButtonNode(imageNode: "chevron_left", position: CGPoint(x: self.frame.midX - 100, y: self.frame.minY + 120), xScale: 0.17, yScale: 0.17)
         self.changeButton(buttonNode: leftButtonNode, state: false)
         self.addChild(leftButtonNode)
         
         // Right Button
-        rightButtonNode = ButtonNode(imageNode: "chevron_right", position: CGPoint(x: self.frame.midX + 80, y: self.frame.minY + 120), xScale: 0.12, yScale: 0.12)
+        rightButtonNode = ButtonNode(imageNode: "chevron_right", position: CGPoint(x: self.frame.midX + 100, y: self.frame.minY + 120), xScale: 0.17, yScale: 0.17)
         self.changeButton(buttonNode: rightButtonNode, state: true)
         self.addChild(rightButtonNode)
         
         // Unlock Label
-        unlockLabelNode = LabelNode(text: "0 to unlock", fontSize: 18, position: CGPoint(x: self.frame.midX, y: self.frame.midY - 75), fontColor: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1))
+        unlockLabelNode = LabelNode(text: "0 to unlock", fontSize: 18, position: CGPoint(x: self.frame.midX, y: self.frame.midY - 129), fontColor: #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1))
         unlockLabelNode.zPosition = 28
         self.addChild(unlockLabelNode)
+        
+        // Unlock Label Background
+        back = ButtonNode(imageNode: "text_back", position: CGPoint(x: self.frame.midX, y: self.frame.midY - 122), xScale: 0.48, yScale: 0.6)
+        back.alpha = 0.7
+        back.zPosition = 12
+        self.addChild(back)
         
         
         
@@ -121,15 +128,17 @@ class MenuScene: SimpleScene {
         
         flipsTagNode.isHidden = unlocked
         unlockLabelNode.isHidden = unlocked
+        back.isHidden = unlocked
         
         bottleNode.texture = SKTexture(imageNamed: bottle.Sprite!)
-        bottleNode.color = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.5)
+        bottleNode.color = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.6555960519)
         if unlocked {
             bottleNode.colorBlendFactor = 0
             pulseStartNode(playButtonNode)
         } else {
             playButtonNode.removeAllActions()
             bottleNode.colorBlendFactor = 1
+            
         }
         playButtonNode.texture = SKTexture(imageNamed: (unlocked ? "PlayBtn": "lock"))
         
@@ -141,7 +150,7 @@ class MenuScene: SimpleScene {
         
         bottleNode.position = CGPoint(x: self.frame.midX, y: self.frame.minY + bottleNode.size.height/2 + 78)
         
-        unlockLabelNode.text = "\(bottle.MinFlips!.intValue) flips to unlock"
+        unlockLabelNode.text = "\(bottle.MinFlips!.intValue) to unlock"
         
         self.updateArrowsState()
         

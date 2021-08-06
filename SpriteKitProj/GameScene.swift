@@ -44,7 +44,7 @@ class GameScene: SimpleScene {
         tableNode.physicsBody?.affectedByGravity = false
         tableNode.physicsBody?.isDynamic = false
         tableNode.physicsBody?.restitution = 0
-        tableNode.xScale = 0.45
+        tableNode.xScale = 0.6
         tableNode.yScale = 0.45
         
         tableNode.position = CGPoint(x: self.frame.midX, y: self.frame.minY + 5)
@@ -135,8 +135,8 @@ class GameScene: SimpleScene {
                 
                 if speed >= 20 {
                     // Add angular velocity impulse
-                    bottleNode.physicsBody?.angularVelocity = 7
-                    bottleNode.physicsBody?.applyImpulse(CGVector(dx: 0, dy: distance * 1.8))
+                    bottleNode.physicsBody?.angularVelocity = 5.1 * (abs(x) / x) * (-1)
+                    bottleNode.physicsBody?.applyImpulse(CGVector(dx: x * 0.5, dy: distance * 1.8))
                     
                     didSwipe = true
                 }

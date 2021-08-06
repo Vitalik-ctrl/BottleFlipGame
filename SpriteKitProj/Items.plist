@@ -8,9 +8,9 @@
 		<key>Mass</key>
 		<real>0.95</real>
 		<key>XScale</key>
-		<real>0.15</real>
+		<real>0.45</real>
 		<key>YScale</key>
-		<real>0.15</real>
+		<real>0.4</real>
 		<key>Restitution</key>
 		<integer>0</integer>
 		<key>MinFlips</key>
@@ -22,13 +22,13 @@
 		<key>Mass</key>
 		<integer>1</integer>
 		<key>XScale</key>
-		<real>0.15</real>
+		<real>0.45</real>
 		<key>YScale</key>
-		<real>0.15</real>
+		<real>0.4</real>
 		<key>Restitution</key>
 		<real>0.032</real>
 		<key>MinFlips</key>
-		<integer>3</integer>
+		<integer>4</integer>
 	</dict>
 	<dict>
 		<key>Sprite</key>
@@ -36,13 +36,27 @@
 		<key>Mass</key>
 		<real>1.04</real>
 		<key>XScale</key>
-		<real>0.15</real>
+		<real>0.47</real>
 		<key>YScale</key>
-		<real>0.15</real>
+		<real>0.42</real>
 		<key>Restitution</key>
 		<real>0.09</real>
 		<key>MinFlips</key>
-		<integer>6</integer>
+		<integer>8</integer>
+	</dict>
+	<dict>
+		<key>Sprite</key>
+		<string>wine</string>
+		<key>Mass</key>
+		<integer>1</integer>
+		<key>XScale</key>
+		<real>0.45</real>
+		<key>YScale</key>
+		<real>0.4</real>
+		<key>Restitution</key>
+		<integer>0</integer>
+		<key>MinFlips</key>
+		<integer>12</integer>
 	</dict>
 	<dict>
 		<key>Sprite</key>
@@ -50,13 +64,13 @@
 		<key>Mass</key>
 		<real>1.12</real>
 		<key>XScale</key>
-		<real>0.15</real>
+		<real>0.4</real>
 		<key>YScale</key>
-		<real>0.15</real>
+		<real>0.4</real>
 		<key>Restitution</key>
 		<real>0.12</real>
 		<key>MinFlips</key>
-		<integer>9</integer>
+		<integer>16</integer>
 	</dict>
 	<dict>
 		<key>Sprite</key>
@@ -64,13 +78,13 @@
 		<key>Mass</key>
 		<real>1</real>
 		<key>XScale</key>
-		<real>0.15</real>
+		<real>0.32</real>
 		<key>YScale</key>
-		<real>0.15</real>
+		<real>0.32</real>
 		<key>Restitution</key>
 		<real>0.07000000000000001</real>
 		<key>MinFlips</key>
-		<integer>12</integer>
+		<integer>20</integer>
 	</dict>
 </array>
 </plist>

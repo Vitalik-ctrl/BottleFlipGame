@@ -18,8 +18,7 @@ class BottleNode: SKSpriteNode {
         self.yScale = CGFloat(bottle.YScale!.floatValue)
         self.physicsBody?.isDynamic = true
         self.physicsBody?.allowsRotation = true
-        self.physicsBody?.angularDamping = 2
-        self.physicsBody?.pinned = false
+        self.physicsBody?.angularDamping = 0.25
         self.physicsBody?.mass = CGFloat(bottle.Mass!.doubleValue)
         self.physicsBody?.restitution = CGFloat(bottle.Restitution!.doubleValue)
     }

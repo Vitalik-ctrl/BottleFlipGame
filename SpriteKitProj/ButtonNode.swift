@@ -26,7 +26,7 @@ class ButtonNode: SKSpriteNode {
     
     func buttonAnimation() {
         let scaleDownAction = SKAction.scale(to: 0, duration: 0)
-        let scaleUpAction = SKAction.scale(to: originalScale, duration: 1)
+        let scaleUpAction = SKAction.scale(to: originalScale, duration: 0)
         let seq = SKAction.sequence([scaleDownAction, scaleUpAction])
         
         self.run(seq)
